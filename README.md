@@ -28,10 +28,20 @@ TODO:
     - [ ] forEach
     - [ ] first
     - [ ] last
-    - [ ] insert
+    - [x] prepend
     - [ ] remove
+    - [ ] print
 
 try not to google
+
+null
+
+{data: 'bla', next: null}
+
+{
+  data: 'bla',
+  next: { data: 'blabla', next: null }
+}
 
 {
   data: 'bla',
@@ -40,3 +50,7 @@ try not to google
 
 does not modify list, but creates a new list
 make it functional
+
+
+TODO:
+- [ ] set up testing
