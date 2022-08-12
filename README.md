@@ -54,3 +54,4 @@ make it functional
 
 TODO:
 - [ ] set up testing
+- [ ] rewrite print to use forEach
