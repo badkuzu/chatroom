@@ -43,3 +43,9 @@ function first(list: List): ListItem["data"] | undefined {
   if (list === null) return
   return list.data
 }
+
+function last(list: List): ListItem["data"] | undefined {
+  if (list === null) return
+  if (list.next === null) return list.data
+  return last(list.next)
+}
