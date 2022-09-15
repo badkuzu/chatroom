@@ -32,3 +32,9 @@ function mapList(
   list.next = mapList(list.next, callback)
   return list
 }
+
+function forEachList(list: List, callback: (item: ListItem["data"]) => ListItem["data"]): void {
+  if (list === null) return
+  callback(list.data)
+  forEachList(list.next, callback)
+}

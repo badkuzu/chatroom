@@ -25,7 +25,7 @@ TODO:
 - [ ] implement methods:
     - [ ] find
     - [x] map
-    - [ ] forEach
+    - [x] forEach
     - [ ] first
     - [ ] last
     - [x] prepend
