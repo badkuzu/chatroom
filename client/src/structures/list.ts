@@ -16,10 +16,16 @@ function prepend(list: List, data: string): List {
   }
 }
 
-// refine, prints undefined
+// refine?
 function printList(list: List): void {
   if (list === null) return
-  process.stdout.write(list.data + ", ")
+  let delimiter;
+  if (list.next === null) {
+    delimiter = "\n"
+  } else {
+    delimiter = ", "
+  }
+  process.stdout.write(list.data + delimiter)
   printList(list.next)
 }
 
