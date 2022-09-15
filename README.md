@@ -24,7 +24,7 @@ TODO:
 - [ ] store messages in a list (in a variable)
 - [ ] implement methods:
     - [ ] find
-    - [ ] map
+    - [x] map
     - [ ] forEach
     - [ ] first
     - [ ] last
