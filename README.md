@@ -26,7 +26,7 @@ TODO:
     - [ ] find
     - [x] map
     - [x] forEach
-    - [ ] first
+    - [x] first
     - [ ] last
     - [x] prepend
     - [ ] remove

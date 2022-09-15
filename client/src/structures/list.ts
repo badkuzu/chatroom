@@ -38,3 +38,8 @@ function forEachList(list: List, callback: (item: ListItem["data"]) => ListItem[
   callback(list.data)
   forEachList(list.next, callback)
 }
+
+function first(list: List): ListItem["data"] | undefined {
+  if (list === null) return
+  return list.data
+}
