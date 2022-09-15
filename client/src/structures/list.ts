@@ -55,3 +55,10 @@ function last(list: List): ListItem["data"] | undefined {
   if (list.next === null) return list.data
   return last(list.next)
 }
+
+function find(list: List, item: ListItem["data"]): List | false | undefined {
+  if (list === null) return
+  if (list.data === item) return list
+  if (list.next === null) return false
+  return find(list.next, item)
+}

@@ -23,14 +23,14 @@ TODO:
 - [ ] implement a list data structure
 - [ ] store messages in a list (in a variable)
 - [ ] implement methods:
-    - [ ] find
+    - [x] find
     - [x] map
     - [x] forEach
     - [x] first
     - [x] last
     - [x] prepend
     - [ ] remove
-    - [ ] print
+    - [x] print
 
 try not to google
 
