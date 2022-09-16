@@ -16,17 +16,14 @@ function prepend(list: List, data: string): List {
   }
 }
 
-// refine?
 function printList(list: List): void {
-  if (list === null) return
-  let delimiter;
-  if (list.next === null) {
-    delimiter = "\n"
-  } else {
-    delimiter = ", "
-  }
-  process.stdout.write(list.data + delimiter)
-  printList(list.next)
+  process.stdout.write(listToString(list) + "\n")
+}
+
+function listToString(list: List): string {
+  if (list === null) return ''
+  if (list.next === null) return list.data
+  return list.data + ", " + listToString(list.next)
 }
 
 function mapList(
@@ -58,7 +55,14 @@ function last(list: List): ListItem["data"] | undefined {
 
 function find(list: List, item: ListItem["data"]): List | false | undefined {
   if (list === null) return
-  if (list.data === item) return list
+  if (list.data === item) return list.data
   if (list.next === null) return false
   return find(list.next, item)
+}
+
+function remove(list: List, item: ListItem["data"]): List | null | undefined {
+  if (list === null) return
+  if (list.next === null) return list
+  if (list.next.data === item) list.next = list.next.next
+  return remove(list.next, item)
 }

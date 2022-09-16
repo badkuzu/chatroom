@@ -20,7 +20,7 @@ data structures:
 - lists
 
 TODO:
-- [ ] implement a list data structure
+- [x] implement a list data structure
 - [ ] store messages in a list (in a variable)
 - [ ] implement methods:
     - [x] find
@@ -54,4 +54,11 @@ make it functional
 
 TODO:
 - [ ] set up testing
-- [ ] rewrite print to use forEach
+
+- [ ] reduce
+- [ ] make map not mutate the initial value
+- [ ] make list item generic (also complex types)
+- [ ] listToString uses reduce
+- [ ] pass callback to find, and not the item, and return list.data (not the list)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+- [ ] remove should be not mutating!
