@@ -55,7 +55,7 @@ make it functional
 TODO:
 - [x] set up testing
 
-- [ ] reduce
+- [x] reduce
 - [x] make map not mutate the initial value
 - [ ] make list item generic (also complex types)
 - [ ] listToString uses reduce
