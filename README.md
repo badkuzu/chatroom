@@ -53,7 +53,7 @@ make it functional
 
 
 TODO:
-- [ ] set up testing
+- [x] set up testing
 
 - [ ] reduce
 - [ ] make map not mutate the initial value

@@ -21,7 +21,7 @@ function printList(list: List): void {
 }
 
 function listToString(list: List): string {
-  if (list === null) return ''
+  if (list === null) return ""
   if (list.next === null) return list.data
   return list.data + ", " + listToString(list.next)
 }
@@ -36,7 +36,10 @@ function mapList(
   return list
 }
 
-function forEachList(list: List, callback: (item: ListItem["data"]) => ListItem["data"]): void {
+function forEachList(
+  list: List,
+  callback: (item: ListItem["data"]) => ListItem["data"]
+): void {
   if (list === null) return
   callback(list.data)
   forEachList(list.next, callback)
@@ -53,7 +56,10 @@ function last(list: List): ListItem["data"] | undefined {
   return last(list.next)
 }
 
-function find(list: List, item: ListItem["data"]): List | false | undefined {
+function find(
+  list: List,
+  item: ListItem["data"]
+): ListItem["data"] | false | undefined {
   if (list === null) return
   if (list.data === item) return list.data
   if (list.next === null) return false
@@ -65,4 +71,17 @@ function remove(list: List, item: ListItem["data"]): List | null | undefined {
   if (list.next === null) return list
   if (list.next.data === item) list.next = list.next.next
   return remove(list.next, item)
+}
+
+export default {
+  createList,
+  prepend,
+  printList,
+  listToString,
+  mapList,
+  forEachList,
+  first,
+  last,
+  find,
+  remove,
 }
