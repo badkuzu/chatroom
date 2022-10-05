@@ -29,7 +29,7 @@ function listToString(list: List): string {
 function mapList(
   list: List,
   callback: (item: ListItem["data"]) => ListItem["data"]
-): List | null {
+): List {
   if (list === null) return null
   return { data: callback(list.data), next: mapList(list.next, callback) }
 }
@@ -41,6 +41,22 @@ function forEachList(
   if (list === null) return
   callback(list.data)
   forEachList(list.next, callback)
+}
+
+function reduceList(
+  list: List,
+  callback: (
+    previousValue: ListItem["data"] | null,
+    currentValue: ListItem["data"] | null
+  ) => ListItem["data"],
+	previousValue: ListItem["data"] | null = null
+): List {
+  if (list === null) return null
+	const newValue = callback(previousValue, list.data)
+  return {
+    data: newValue,
+    next: reduceList(list.next, callback, newValue),
+  }
 }
 
 function first(list: List): ListItem["data"] | undefined {
