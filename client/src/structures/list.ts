@@ -31,9 +31,7 @@ function mapList(
   callback: (item: ListItem["data"]) => ListItem["data"]
 ): List | null {
   if (list === null) return null
-  list.data = callback(list.data)
-  list.next = mapList(list.next, callback)
-  return list
+  return { data: callback(list.data), next: mapList(list.next, callback) }
 }
 
 function forEachList(

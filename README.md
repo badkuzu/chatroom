@@ -56,7 +56,7 @@ TODO:
 - [x] set up testing
 
 - [ ] reduce
-- [ ] make map not mutate the initial value
+- [x] make map not mutate the initial value
 - [ ] make list item generic (also complex types)
 - [ ] listToString uses reduce
 - [ ] pass callback to find, and not the item, and return list.data (not the list)
