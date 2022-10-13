@@ -1,5 +1,5 @@
 import { describe, test, expect } from "@jest/globals"
-import { createTree, itemsCount} from '../src/structures/tree'
+import { createTree, itemsCount, addItem } from "../src/structures/tree"
 
 describe("creating tree", () => {
   test("create a tree of zero item", () => {
@@ -7,9 +7,12 @@ describe("creating tree", () => {
     expect(itemsCount(tree)).toEqual(0)
   })
 
-  test.todo("create a tree of one item")
+  test("create a tree of one item", () => {
+		const tree = createTree("a")
+		expect(tree).toEqual({ data: 'a', left: null, right: null })
+	})
 
-  test.todo("create a tree of two items")
+  test("create a tree of two items", () => {})
 })
 
 describe("adding items", () => {})
@@ -22,6 +25,9 @@ describe("adding items", () => {})
  * - - c
  * - d
  */
-describe("printing the tree", () => {})
+describe("printing the tree", () => {
+  test("prints a tree", () => {
+  })
+})
 
 // TODO: Implement a Map with Trees
