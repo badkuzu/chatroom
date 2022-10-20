@@ -108,3 +108,13 @@ a
 a
 - null
 - b
+
+## ⚖️ TREE BALANCING
+Homework
+- [ ] Implement AVL or red-black (!) balancing
+
+## 🔎 SEARCH
+The idea:
+Store messages in a simple array
+Store words in a tree with arrays containing refences to the positions of messages in the words array
+In case of two words, perform two searches and then make an intersection of results to find messages that satisfy both searches
