@@ -101,4 +101,10 @@ a
 - - c
 - d
 
-
+##
+- [ ] make a .toString function instead of print function
+- [ ] use the .toString function to test other functionalities (hide implementation details!)
+- [ ] implement 
+a
+- null
+- b
