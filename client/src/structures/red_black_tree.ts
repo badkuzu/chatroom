@@ -61,23 +61,13 @@ const rebalanceTree = <T>(tree: Tree<T>): Tree<T> => {
   // 		if yes
   // 		if other child black, rebalance
   // 		if other child red, recolour
-	
+
   if (isElementGrandparent(tree) && tree?.color !== "red") {
     const childL = tree?.left
     const childR = tree?.right
-
-    // TODO: refactor
-    if (childL?.color === "red") {
+    if ([childL?.color, childR?.color].includes("red")) {
       if (childL?.left?.color === "red" || childL?.right?.color === "red") {
-        let other_child = childR
-        if (other_child?.color === "red") return recolour(tree)
-        return rebalance(tree)
-      }
-    }
-
-    if (childR?.color === "red") {
-      if (childR?.left?.color === "red" || childR?.right?.color === "red") {
-        let other_child = childL
+        let other_child = childL?.color === "red" ? childR : childL
         if (other_child?.color === "red") return recolour(tree)
         return rebalance(tree)
       }
