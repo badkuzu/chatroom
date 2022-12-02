@@ -2,7 +2,7 @@ import { Key } from "readline"
 import { Tree } from "../structures/tree"
 
 // TODO: k also a string???
-interface treeObject<V> {
+interface TreeObject<V> {
   [k: number]: V
 }
 
@@ -12,9 +12,9 @@ const binarySearch = <T>(target: T, tree: Tree<T>) => {
 }
 
 const keyValueBinarySearch = <V>(
-  targetKey: keyof treeObject<V>,
-  tree: Tree<treeObject<V>>,
-  compare: (data: treeObject<V>, target: number) => number
+  targetKey: keyof TreeObject<V>,
+  tree: Tree<TreeObject<V>>,
+  compare: (data: TreeObject<V>, target: number) => number
 ): V | null => {
   if (!tree) return null
 
