@@ -2,8 +2,8 @@ import { Key } from "readline"
 import { Tree } from "../structures/tree"
 
 // TODO: k also a string???
-interface TreeObject<V> {
-  [k: number]: V
+interface TreeData {
+  [k: string]: any
 }
 
 const binarySearch = <T>(target: T, tree: Tree<T>) => {
@@ -12,20 +12,20 @@ const binarySearch = <T>(target: T, tree: Tree<T>) => {
 }
 
 const keyValueBinarySearch = <V>(
-  targetKey: keyof TreeObject<V>,
-  tree: Tree<TreeObject<V>>,
-  compare: (data: TreeObject<V>, target: number) => number
-): V | null => {
+  searchQuery: V,
+  tree: Tree<TreeData>,
+  compare: (current: TreeData, target: any) => number
+): any | null => {
   if (!tree) return null
 
-  const compareResult = compare(tree.data, targetKey)
+  const compareResult = compare(tree.data, searchQuery)
   if (compareResult < 0) {
-    return keyValueBinarySearch(targetKey, tree.left, compare)
+    return keyValueBinarySearch(searchQuery, tree.left, compare)
   } else if (compareResult > 0) {
-    return keyValueBinarySearch(targetKey, tree.right, compare)
+    return keyValueBinarySearch(searchQuery, tree.right, compare)
   } else {
     // found
-    return tree.data[targetKey]
+    return tree.data
   }
 }
 

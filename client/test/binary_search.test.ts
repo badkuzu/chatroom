@@ -3,39 +3,51 @@ import { createTree, addItem } from "../src/structures/tree"
 import { keyValueBinarySearch } from "../src/algorithms/binary_search"
 
 // TODO: k -> number or string
-interface TreeObject<V> {
-  [k: number]: V
+interface TreeData {
+  [k: string]: any
 }
 
-const compareKeyFunction = <V>(
-  current: TreeObject<V>,
-  inserted: TreeObject<V>
-): number => Number(Object.keys(current)[0]) - Number(Object.keys(inserted)[0])
+const compareKeyFunction = (
+  current: TreeData,
+  inserted: TreeData
+): number => current.position - inserted.position
 
 // TODO: other than number?
-const compareForSearch = <V>(current: TreeObject<V>, target: number): number =>
-  Number(Object.keys(current)[0]) - target
+const compareForWordSearch = (
+  current: TreeData,
+  target: number
+): number => current.position as number - target
 
 describe("searching", () => {
   test("returns null for an empty tree", () => {
-    const tree = createTree<TreeObject<null>>()
-    expect(keyValueBinarySearch(2, tree, compareForSearch)).toBeNull()
+    const tree = createTree<TreeData>()
+    expect(keyValueBinarySearch(2, tree, compareForWordSearch)).toBeNull()
   })
 
   test("returns the found value in a tree of degree 0", () => {
-    const tree = createTree<TreeObject<string>>()
-    const treeOfOne = addItem<TreeObject<string>>(
+    const tree = createTree<TreeData>()
+    const treeOfOne = addItem(
       tree,
-      { 1: "hello" },
+      { word: "hello", position: 1 },
       compareKeyFunction
     )
-    expect(keyValueBinarySearch(1, treeOfOne, compareForSearch)).toBe("hello")
+		const result = keyValueBinarySearch(1, treeOfOne, compareForWordSearch)
+    expect(result.word).toBe("hello")
   })
 
   test("returns the found value in a tree of degree 1", () => {
-    const tree = createTree<TreeObject<string>>()
-    const treeOfOne = addItem(tree, { 1: "hello" }, compareKeyFunction)
-    const treeOfTwo = addItem(treeOfOne, { 2: "goodbye" }, compareKeyFunction)
-    expect(keyValueBinarySearch(2, treeOfTwo, compareForSearch)).toBe("goodbye")
+    const tree = createTree<TreeData>()
+    const treeOfOne = addItem(
+      tree,
+      { word: "hello", position: 1 },
+      compareKeyFunction
+    )
+    const treeOfTwo = addItem(
+      treeOfOne,
+      { word: "goodbye", position: 2 },
+      compareKeyFunction
+    )
+		const result = keyValueBinarySearch(2, treeOfTwo, compareForWordSearch)
+    expect(result.word).toBe("goodbye")
   })
 })

@@ -118,3 +118,20 @@ The idea:
 Store messages in a simple array
 Store words in a tree with arrays containing refences to the positions of messages in the words array
 In case of two words, perform two searches and then make an intersection of results to find messages that satisfy both searches
+
+
+# 02.12
+TODO:
+- change the way data is stored
+data.word
+data.positions
+not the key value thing
+
+- make the search function generic, not only for the key value thing
+search<K, T>(key: K, tree: <Tree<K, T>>, compare: () => number)
+
+- do the chat search implementation
+refer to the screenshot in root folder
+
+improvement idea:
+get results for every word that starts with... then it's not word bound
