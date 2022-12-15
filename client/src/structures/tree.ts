@@ -48,4 +48,4 @@ const printTree = <T>(tree: Tree<T>, sign: string = ""): void => {
 }
 
 export { createTree, itemsCount, addItem, printTree }
-export { Tree }
+export type { Tree }

@@ -135,3 +135,7 @@ refer to the screenshot in root folder
 
 improvement idea:
 get results for every word that starts with... then it's not word bound
+
+
+// TODO:
+- message position should be array
