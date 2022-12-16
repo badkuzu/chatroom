@@ -139,3 +139,4 @@ get results for every word that starts with... then it's not word bound
 
 // TODO:
 - message position should be array
+- pass messagePosition instead of message array to addMessage, return the added

@@ -218,7 +218,7 @@ describe("addMessage", () => {
     const messageObjectToAdd = {
       message: "hi Etienne how are you?",
       author: "kuba",
-      timestamp: 999999,
+      timestamp: "999999",
     }
     const messageArray = [] as MessageObject[]
 
@@ -358,7 +358,7 @@ describe("findMessage", () => {
       const expectedResult = {
         message: "hello mon frere",
         author: "etienne",
-        timestamp: 12543,
+        timestamp: "12543",
       }
 
 			expect(result).toStrictEqual(expectedResult)

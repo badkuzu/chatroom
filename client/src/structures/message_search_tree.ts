@@ -11,7 +11,7 @@ type MessageTreeData = {
 type MessageObject = {
   message: string
   author: string
-  timestamp: number
+  timestamp: string
 }
 
 type AddMessageReturn = {
@@ -95,7 +95,7 @@ function findMessage(
   messageArray: MessageObject[]
 ): MessageObject | null {
   const messagePosition = findMessagePosition(word, tree)
-	if (!messagePosition) return null
+	if (messagePosition === undefined) return null
   return messageArray[messagePosition]
 }
 
