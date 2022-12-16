@@ -6,6 +6,8 @@ import {
   addWord,
   MessageTreeData,
   MessageObject,
+  findMessagePosition,
+  findMessage,
 } from "../src/structures/message_search_tree"
 
 describe("addWord", () => {
@@ -223,7 +225,7 @@ describe("addMessage", () => {
     test("returns a populated messages array and a populated words tree", () => {
       const result = addMessage(tree, messageObjectToAdd, messageArray)
 
-			const expectedResultMessageArray = [messageObjectToAdd]
+      const expectedResultMessageArray = [messageObjectToAdd]
       const expectedResultTree = {
         data: { word: "you?", messagePosition: 0 },
         left: {
@@ -246,10 +248,118 @@ describe("addMessage", () => {
         right: null,
       }
 
-			const expectedResult = {
-				messageArray: expectedResultMessageArray,
-				tree: expectedResultTree
-			}
+      const expectedResult = {
+        messageArray: expectedResultMessageArray,
+        tree: expectedResultTree,
+      }
+
+      expect(result).toStrictEqual(expectedResult)
+    })
+  })
+})
+
+describe("findMessagePosition", () => {
+  describe("for an empty tree", () => {
+    const emptyTree = createTree<MessageTreeData>()
+
+    test("returns undefined", () => {
+      expect(findMessagePosition("hello", emptyTree)).toBeUndefined()
+    })
+  })
+
+  describe("for tree of one element", () => {
+    const tree = {
+      data: { word: "hello", messagePosition: 15 },
+      left: null,
+      right: null,
+    }
+    test("finds the message position", () => {
+      const result = findMessagePosition("hello", tree)
+      expect(result).toEqual(15)
+    })
+  })
+
+  describe("for tree of multiple elements", () => {
+    const multipleElementTree = {
+      data: { word: "you?", messagePosition: 0 },
+      left: {
+        data: { word: "are", messagePosition: 0 },
+        left: null,
+        right: {
+          data: { word: "how", messagePosition: 0 },
+          left: {
+            data: { word: "Etienne", messagePosition: 0 },
+            left: null,
+            right: {
+              data: { word: "hi", messagePosition: 0 },
+              left: {
+                data: { word: "hello", messagePosition: 12 },
+                left: null,
+                right: null,
+              },
+              right: null,
+            },
+          },
+          right: null,
+        },
+      },
+      right: null,
+    }
+
+    test("finds the message position", () => {
+      const result = findMessagePosition("hello", multipleElementTree)
+      expect(result).toEqual(12)
+    })
+  })
+})
+
+describe("findMessage", () => {
+  const messageArray = [
+    { message: "hi Etienne how are you?", author: "kubz", timestamp: 9999 },
+    { message: "hello mon frere", author: "etienne", timestamp: 12543 },
+  ]
+  const multipleElementTree = {
+    data: { word: "you?", messagePosition: 0 },
+    left: {
+      data: { word: "are", messagePosition: 0 },
+      left: null,
+      right: {
+        data: { word: "how", messagePosition: 0 },
+        left: {
+          data: { word: "Etienne", messagePosition: 0 },
+          left: null,
+          right: {
+            data: { word: "hi", messagePosition: 0 },
+            left: {
+              data: { word: "hello", messagePosition: 1 },
+              left: {
+                data: { word: "frere", messagePosition: 1 },
+                left: null,
+                right: null,
+              },
+              right: null,
+            },
+            right: null,
+          },
+        },
+        right: {
+          data: { word: "mon", messagePosition: 1 },
+          left: null,
+          right: null,
+        },
+      },
+    },
+    right: null,
+  }
+
+  describe("for a tree of multiple elements", () => {
+    test("finds the message object", () => {
+      const result = findMessage("frere", multipleElementTree, messageArray)
+      const expectedResult = {
+        message: "hello mon frere",
+        author: "etienne",
+        timestamp: 12543,
+      }
 
 			expect(result).toStrictEqual(expectedResult)
     })

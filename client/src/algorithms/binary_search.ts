@@ -11,11 +11,11 @@ const binarySearch = <T>(target: T, tree: Tree<T>) => {
   return null
 }
 
-const keyValueBinarySearch = <V>(
+const keyValueBinarySearch = <V, D>(
   searchQuery: V,
-  tree: Tree<TreeData>,
-  compare: (current: TreeData, target: any) => number
-): any | null => {
+  tree: Tree<D>,
+  compare: (current: any, target: any) => number
+): D | null => {
   if (!tree) return null
 
   const compareResult = compare(tree.data, searchQuery)

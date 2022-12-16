@@ -1,3 +1,4 @@
+import { keyValueBinarySearch } from "../algorithms/binary_search"
 import { addItem, Tree } from "./tree"
 
 type CompareReturn = 1 | 0 | -1
@@ -79,5 +80,24 @@ function addWord(
   return addItem<MessageTreeData>(tree, data, alphabetCompare)
 }
 
-export { addMessage, addWords, addWord }
+// finds the index of the message in message array
+function findMessagePosition(
+  word: string,
+  tree: Tree<MessageTreeData>
+): number | undefined {
+  const foundItem = keyValueBinarySearch({ word }, tree, alphabetCompare)
+  return foundItem?.messagePosition
+}
+
+function findMessage(
+  word: string,
+  tree: Tree<MessageTreeData>,
+  messageArray: MessageObject[]
+): MessageObject | null {
+  const messagePosition = findMessagePosition(word, tree)
+	if (!messagePosition) return null
+  return messageArray[messagePosition]
+}
+
+export { addMessage, addWords, addWord, findMessagePosition, findMessage }
 export { MessageTreeData, MessageObject }
